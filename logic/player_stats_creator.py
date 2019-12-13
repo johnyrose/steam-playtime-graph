@@ -12,8 +12,13 @@ def _create_stats_by_common_game_info_attribute(games: list, attribute: str) -> 
     return stats_dict
 
 
-def create_stats_by_developer() -> dict:
+def _get_games_list() -> list:
     profile_id = steam_api_adapter.get_player_id(config.PROFILE_NAME, config.STEAM_API_KEY)
     games = steam_api_adapter.get_owned_games(profile_id, config.STEAM_API_KEY)
+    return games
+
+
+def create_stats_by_developer() -> dict:
+    games = _get_games_list()
     devs_dict = _create_stats_by_common_game_info_attribute(games, attribute='developer')
     return devs_dict
