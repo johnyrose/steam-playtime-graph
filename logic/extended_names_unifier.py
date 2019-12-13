@@ -1,7 +1,9 @@
 def unify_extended_names(stats):
     checked_keys = []
     for key in stats:
-        if key not in checked_keys:
+        if key and key not in checked_keys:
+            # Steam may sometimes return an empty string for developer/publisher
+            # if they are not mentioned, hence checking the key.
             extended_keys = _find_all_extended_keys(stats, key)
             for extended_key in extended_keys:
                 stats[key] += stats[extended_key]
