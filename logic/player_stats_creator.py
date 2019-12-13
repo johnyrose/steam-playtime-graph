@@ -6,9 +6,10 @@ def _create_stats_by_common_game_info_attribute(games: list, attribute: str) -> 
     stats_dict = {}
     for game_stats in games:
         game_info = steamspy_api_adapter.get_game_info(game_stats['appid'])
-        if game_info[attribute] not in stats_dict:
-            stats_dict[game_info[attribute]] = 0
-        stats_dict[game_info[attribute]] += game_stats['playtime_forever'] / 60
+        if game_stats['playtime_forever'] != 0:
+            if game_info[attribute] not in stats_dict:
+                stats_dict[game_info[attribute]] = 0
+            stats_dict[game_info[attribute]] += game_stats['playtime_forever'] / 60
     return stats_dict
 
 
