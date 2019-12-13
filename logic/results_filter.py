@@ -2,7 +2,11 @@ from config import config
 
 
 def filter_results(stats: dict) -> dict:
-    filters = [_remove_stats_with_insufficient_playtime, _filter_stats_by_max_studio_amount]
+    filters = [
+        _improve_company_name_texts,
+        _remove_stats_with_insufficient_playtime,
+        _filter_stats_by_max_studio_amount
+    ]
     for filter_function in filters:
         stats = filter_function(stats)
     return stats
@@ -26,3 +30,20 @@ def _filter_stats_by_max_studio_amount(stats):
         for item in ousted_items:
             del sorted_stats[item]
         return sorted_stats
+
+
+def _improve_company_name_texts(stats):
+    keys_to_change = []
+    for item in stats:
+        keys_to_change.append(item)
+    for key in keys_to_change:
+        new_name = _improve_company_name(key)
+        stats[new_name] = stats.pop(key)
+    return stats
+
+
+def _improve_company_name(name):
+    split_name = name.split(' ')
+    if len(split_name) >= 1:
+        name = '\n'.join(split_name)
+    return name
