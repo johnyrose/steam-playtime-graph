@@ -22,3 +22,9 @@ def create_stats_by_developer() -> dict:
     games = _get_games_list()
     devs_dict = _create_stats_by_common_game_info_attribute(games, attribute='developer')
     return devs_dict
+
+
+def create_stats_by_publisher() -> dict:
+    games = _get_games_list()
+    punlishers_dict = _create_stats_by_common_game_info_attribute(games, attribute='publisher')
+    return punlishers_dict
