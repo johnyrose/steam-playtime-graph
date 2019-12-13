@@ -1,3 +1,4 @@
+from config import config
 from matplotlib import pyplot as plt
 import numpy
 
@@ -7,8 +8,8 @@ def generate_stats_bar_graph(player_stats: dict):
     hours = player_stats.values()
     keys_nums = numpy.arange(len(keys))
     plt.xticks(keys_nums, keys)
-    plt.title("Hours by Developer")
-    plt.ylabel("Hours")
-    plt.xlabel("Developer")
+    plt.title(config.GRAPH_TITLE)
+    plt.ylabel(config.Y_LABEL)
+    plt.xlabel(config.X_LABEL)
     plt.bar(keys_nums, hours)
     plt.show()

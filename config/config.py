@@ -15,4 +15,8 @@ STEAM_API_KEY = user_config["steam_api_key"]
 MAX_STUDIOS_AMOUNT = int(user_config.get("max_bars_amount", 15))
 MINIMUM_HOURS = int(user_config.get("minimum_hours", None))
 
+GRAPH_TITLE = user_config.get("graph_title", "Amount of hours spent")
+X_LABEL = user_config.get("x_label", "Company")
+Y_LABEL = user_config.get("y_label", "Hours")
+
 # endregion
