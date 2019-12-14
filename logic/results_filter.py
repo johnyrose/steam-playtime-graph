@@ -43,9 +43,9 @@ def _improve_company_name_texts(stats):
 
 
 def _improve_company_name(name):
-    split_name = name.split(' ')
-    if len(split_name) >= 1:
-        name = '\n'.join(split_name)
+    space_split_name = name.split(' ')
+    if len(space_split_name) >= 1:
+        name = '\n'.join(space_split_name)
         comma_split_name = name.split(',')
         if len(comma_split_name) > 1:
             name = comma_split_name[0]
