@@ -3,7 +3,7 @@
 This small Python project allows you to create a column graph of the amount of playtime you have on Steam games per developer or per publisher.
 
 ### Example:
-`Add image here`
+![alt text](https://preview.redd.it/7dqxtgcjuk441.png?width=960&crop=smart&auto=webp&s=37a995f8ed025868f4e1d186b79c364691f2c555)
 
 ### How to use:
 
