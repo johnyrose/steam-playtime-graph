@@ -7,21 +7,27 @@ def _get_games_info(games: list) -> dict:
     threads = []
     for game in games:
         threads.append(GameInfoFinder(game['appid']))
-    for thread in threads:
-        thread.start()
-    for thread in threads:
-        thread.join()
+    for thread_chunks in list(_thread_chunks(threads, 2)):
+        for thread in thread_chunks:
+            thread.start()
+        for thread in thread_chunks:
+            thread.join()
     games_info = {}
     for thread in threads:
         games_info[thread.game_info['appid']] = thread.game_info
     return games_info
 
 
+def _thread_chunks(threads: list, parallel: int) -> list:
+    for i in range(0, len(threads), parallel):
+        yield threads[i:i+parallel]
+
+
 def _create_stats_by_common_game_info_attribute(games: list, attribute: str) -> dict:
     games_info = _get_games_info(games)
     stats_dict = {}
     for game_stats in games:
-        game_info = games_info['appid']
+        game_info = games_info[game_stats['appid']]
         if game_stats['playtime_forever'] != 0:
             if game_info[attribute] not in stats_dict:
                 stats_dict[game_info[attribute]] = 0
