@@ -46,4 +46,7 @@ def _improve_company_name(name):
     split_name = name.split(' ')
     if len(split_name) >= 1:
         name = '\n'.join(split_name)
+        comma_split_name = name.split(',')
+        if len(comma_split_name) > 1:
+            name = comma_split_name[0]
     return name
