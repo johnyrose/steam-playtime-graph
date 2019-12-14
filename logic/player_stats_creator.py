@@ -7,7 +7,7 @@ def _get_games_info(games: list) -> dict:
     threads = []
     for game in games:
         threads.append(GameInfoFinder(game['appid']))
-    for thread_chunks in list(_thread_chunks(threads, 2)):
+    for thread_chunks in list(_thread_chunks(threads, config.PARALLEL_API_REQUESTS)):
         for thread in thread_chunks:
             thread.start()
         for thread in thread_chunks:
