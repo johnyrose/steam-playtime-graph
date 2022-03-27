@@ -3,7 +3,8 @@ from config import config
 
 
 if __name__ == '__main__':
-    password = 'test12345'
+    AWS_SECRET = 'aFGRdfwefeHGRG'
+    AWS_CLIENT = 'fefefefefefe'
     measuring_function = measuring_function_finder.get_stats_measuring_function(config.MEASURE_BY)
     stats = measuring_function()
     stats = extended_names_unifier.unify_extended_names(stats)
