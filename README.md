@@ -18,7 +18,7 @@ In order to create a graph based on your Steam profile, you'll need to follow th
 #### Steps:
 - Clone this repository:
     ```
-    git clone https://github.com/Ripolak/steam-playtime-graph.git
+    git clone https://github.com/johnyrose/steam-playtime-graph.git
     cd steam-playtime-graph
     ```
 - Install the requirements:
